@@ -1,6 +1,6 @@
 var f1 ;
 
-unction setup() {
+function setup() {
   createCanvas(500, 500);
   textAlign(CENTER);
   f1 = loadFont("assets/Hallington.ttf")
