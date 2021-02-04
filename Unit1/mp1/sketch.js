@@ -242,10 +242,10 @@ function draw() {
     line(660,550,650,580);
   }
 
-  fill(0);
-  stroke(255);
-  strokeWeight(5);
-  textAlign(LEFT);
-  textSize(12);
-  text(mouseX + ", " + mouseY, mouseX+10, mouseY);
+  //fill(0);
+  //stroke(255);
+  //strokeWeight(5);
+  //textAlign(LEFT);
+  //textSize(12);
+  //text(mouseX + ", " + mouseY, mouseX+10, mouseY);
 }
