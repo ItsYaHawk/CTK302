@@ -1,5 +1,3 @@
-//music
-
 let state = 0;
 let sprite, sprite_win, sprite_lose, ghost;
 let song;
@@ -29,9 +27,7 @@ function setup() {
   ghost = loadImage("assets/ghost.png");
   bg = loadImage("assets/bg.png");
   imageMode(CENTER);
-  //rectMode(CENTER);
   colorMode(HSB);
-  //setInterval(timeIt, 1000);
 
   for (let i = 0; i < 1; i++) {
     ghosts.push(new Ghost1());
@@ -56,10 +52,14 @@ function draw() {
       break;
 
     case 1:
+      song.play();
+      state = 2;
+
+    case 2:
       game();
       break;
 
-    case 2:
+    case 3:
       fill('black');
       noStroke();
       textSize(32);
@@ -67,8 +67,11 @@ function draw() {
       text('PAUSED', 50, 50);
       break;
 
-    case 3:
+    case 4:
       sound1.play();
+      state = 5;
+
+    case 5:
       background('black');
       fill('white');
       stroke('black');
@@ -84,8 +87,11 @@ function draw() {
       text('Click to try again', width / 2, height - 50);
       break;
 
-    case 4:
+    case 6:
       sound2.play();
+      state = 7;
+
+    case 7:
       colorBG();
       fill('black');
       noStroke();
@@ -122,7 +128,6 @@ function colorBG() {
 }
 
 function game() {
-  song.play();
   image(bg, width / 2, height / 2, width, height);
 
   fill('black');
@@ -134,7 +139,7 @@ function game() {
     timerValue--;
   }
   if (timerValue == 0) {
-    state = 4;
+    state = 6;
     timerValue = 30 * 60;
   }
 
@@ -151,7 +156,7 @@ function game() {
     ghosts[i].display();
     ghosts[i].move();
     if (ghosts[i].pos.dist(spritePos) < 80) {
-      state = 3;
+      state = 4;
     }
   }
 
@@ -184,19 +189,19 @@ function mouseReleased() {
     case 0:
       state = 1;
       break;
-    case 1:
-      state = 2;
-      break;
     case 2:
-      state = 1;
+      state = 3;
       break;
     case 3:
-      resetGame();
-      state = 1;
+      state = 2;
       break;
-    case 4:
+    case 5:
       resetGame();
-      state = 1;
+      state = 2;
+      break;
+    case 7:
+      resetGame();
+      state = 2;
       break;
   }
 
