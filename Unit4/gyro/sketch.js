@@ -36,7 +36,7 @@ function draw() {
 
   rotate(radians(alpha)); // rotate the bunny depending on the alpha intake
 
-  image.position(xPosition-500, yPosition-100);
+  image.position(xPosition-325, yPosition-100);
   image.size(500, 500);
   pop();
 
