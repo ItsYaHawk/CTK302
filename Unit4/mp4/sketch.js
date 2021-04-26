@@ -206,7 +206,7 @@ function resetGame() {
 
 }
 
-function touchEnded() {
+function touchStarted() {
   switch (state) {
     case 0:
       state = 1;
