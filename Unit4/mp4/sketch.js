@@ -178,10 +178,10 @@ function game() {
 
   checkForKeys();
 
-  if (xPosition > width) spritePos.x = 0;
-  if (xPosition < 0) spritePos.x = width;
-  if (yPosition > height) spritePos.y = 0;
-  if (yPosition < 0) spritePos.y = height;
+  if (xPosition > width) xPosition = width;
+  if (xPosition < 0) xPosition = 0;
+  if (yPosition > height) yPosition = height;
+  if (yPosition < 0) yPosition = 0;
 
   push();
   translate(xPosition, yPosition);
