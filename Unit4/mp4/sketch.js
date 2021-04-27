@@ -61,7 +61,7 @@ function draw() {
       fill('black');
       textSize(32);
       textAlign(CENTER);
-      text('USE WASD OR ARROW KEYS\nClick to play', width / 2, height / 2);
+      text('USE GYRO CONTROLS\nTap to play', width / 2, height / 2);
       break;
 
     case 1:
@@ -97,7 +97,7 @@ function draw() {
       }
       image(sprite_lose, spritePos.x, spritePos.y, 100, 100);
       text('GAME OVER', width / 2, 50);
-      text('Click to try again', width / 2, height - 50);
+      text('Tap to try again', width / 2, height - 50);
       break;
 
     case 6:
@@ -116,7 +116,7 @@ function draw() {
       }
       image(sprite_win, spritePos.x, spritePos.y, 100, 100);
       text('YOU WIN!', width / 2, 50);
-      text('Click to play again', width / 2, height - 50);
+      text('Tap to play again', width / 2, height - 50);
       break;
 
   }
@@ -178,10 +178,10 @@ function game() {
 
   checkForKeys();
 
-  if (spritePos.x > width) spritePos.x = 0;
-  if (spritePos.x < 0) spritePos.x = width;
-  if (spritePos.y > height) spritePos.y = 0;
-  if (spritePos.y < 0) spritePos.y = height;
+  if (xPosition > width) xPosition = 0;
+  if (xPosition < 0) xPosition = width;
+  if (yPosition > height) yPosition = 0;
+  if (yPosition < 0) yPosition = height;
 
   push();
   translate(xPosition, yPosition);
@@ -206,7 +206,7 @@ function resetGame() {
 
 }
 
-function touchStarted() {
+function mouseReleased() {
   switch (state) {
     case 0:
       state = 1;
