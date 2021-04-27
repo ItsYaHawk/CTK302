@@ -211,12 +211,12 @@ function mouseReleased() {
     case 0:
       state = 1;
       break;
-    case 2:
-      state = 3;
-      break;
-    case 3:
-      state = 2;
-      break;
+    // case 2:
+    //   state = 3;
+    //   break;
+    // case 3:
+    //   state = 2;
+    //   break;
     case 5:
       resetGame();
       state = 2;
