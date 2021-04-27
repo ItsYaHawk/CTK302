@@ -177,9 +177,11 @@ function game() {
 
   // checkForKeys();
 
-  if (xPosition > width) xPosition = 0; xPosition = map(gamma, -18, 18, 0, width);
+  if (xPosition > width) xPosition = 0;
+  if (xPosition = 0) xPosition = map(gamma, -18, 18, 0, width);
   if (xPosition < 0) xPosition = width + map(gamma, -18, 18, 0, width);
-  if (yPosition > height) yPosition = 0; yPosition = map(beta, 25, 45, 0, height);
+  if (yPosition > height) yPosition = 0;
+  if (yPosition = 0) yPosition = map(beta, 25, 45, 0, height);
   if (yPosition < 0) yPosition = height + map(beta, 25, 45, 0, height);
 
   push();
