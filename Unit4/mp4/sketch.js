@@ -177,10 +177,10 @@ function game() {
 
   // checkForKeys();
 
-  if (xPosition > width) xPosition = 0 + gamma;
-  if (xPosition < 0) xPosition = width - gamma;
-  if (yPosition > height) yPosition = 0 + beta;
-  if (yPosition < 0) yPosition = height - beta;
+  if (xPosition > width) xPosition = 0 + map(gamma, -18, 18, 0, width);
+  if (xPosition < 0) xPosition = width + map(gamma, -18, 18, 0, width);
+  if (yPosition > height) yPosition = 0 + map(beta, 25, 45, 0, height);
+  if (yPosition < 0) yPosition = height + map(beta, 25, 45, 0, height);
 
   push();
   translate(xPosition, yPosition);
