@@ -27,7 +27,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowWidth);
+  createCanvas(windowWidth, windowHeight);
 
   alpha = 0;
   beta = 0;
@@ -60,7 +60,7 @@ function draw() {
       fill('black');
       textSize(32);
       textAlign(CENTER);
-      text('USE GYRO CONTROLS\nTap to play', width / 2, height / 2);
+      text('USE GYRO CONTROLS\nTap or shake to play', width / 2, height / 2);
       break;
 
     case 1:
@@ -96,7 +96,7 @@ function draw() {
       }
       image(sprite_lose, spritePos.x, spritePos.y, 100, 100);
       text('GAME OVER', width / 2, 50);
-      text('Tap to try again', width / 2, height - 50);
+      text('Tap or shake to try again', width / 2, height - 50);
       break;
 
     case 6:
@@ -115,18 +115,18 @@ function draw() {
       }
       image(sprite_win, spritePos.x, spritePos.y, 100, 100);
       text('YOU WIN!', width / 2, 50);
-      text('Tap to play again', width / 2, height - 50);
+      text('Tap or shake to play again', width / 2, height - 50);
       break;
 
   }
 }
 
-function checkForKeys() {
-  if (keyIsDown(LEFT_ARROW) || keyIsDown(keyCode = 65)) spritePos.x -= 5;
-  if (keyIsDown(RIGHT_ARROW) || keyIsDown(keyCode = 68)) spritePos.x += 5;
-  if (keyIsDown(UP_ARROW) || keyIsDown(keyCode = 87)) spritePos.y -= 5;
-  if (keyIsDown(DOWN_ARROW) || keyIsDown(keyCode = 83)) spritePos.y += 5;
-}
+// function checkForKeys() {
+//   if (keyIsDown(LEFT_ARROW) || keyIsDown(keyCode = 65)) spritePos.x -= 5;
+//   if (keyIsDown(RIGHT_ARROW) || keyIsDown(keyCode = 68)) spritePos.x += 5;
+//   if (keyIsDown(UP_ARROW) || keyIsDown(keyCode = 87)) spritePos.y -= 5;
+//   if (keyIsDown(DOWN_ARROW) || keyIsDown(keyCode = 83)) spritePos.y += 5;
+// }
 
 function colorBG() {
   const inc = height / 100;
@@ -175,12 +175,12 @@ function game() {
     }
   }
 
-  checkForKeys();
+  // checkForKeys();
 
-  if (xPosition > width) xPosition = width;
-  if (xPosition < 0) xPosition = 0;
-  if (yPosition > height) yPosition = height;
-  if (yPosition < 0) yPosition = 0;
+  if (xPosition > width) xPosition = 0 + gamma;
+  if (xPosition < 0) xPosition = width - gamma;
+  if (yPosition > height) yPosition = 0 + beta;
+  if (yPosition < 0) yPosition = height - beta;
 
   push();
   translate(xPosition, yPosition);
@@ -206,8 +206,6 @@ function resetGame() {
 }
 
 function mouseReleased() {
-
-
   switch (state) {
     case 0:
       state = 1;
@@ -227,7 +225,28 @@ function mouseReleased() {
       state = 2;
       break;
   }
+}
 
+function deviceShaken() {
+  switch (state) {
+    case 0:
+      state = 1;
+      break;
+    // case 2:
+    //   state = 3;
+    //   break;
+    // case 3:
+    //   state = 2;
+    //   break;
+    case 5:
+      resetGame();
+      state = 2;
+      break;
+    case 7:
+      resetGame();
+      state = 2;
+      break;
+  }
 }
 
 window.addEventListener('deviceorientation', function(e) {
