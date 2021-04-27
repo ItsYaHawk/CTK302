@@ -27,7 +27,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowWidth);
 
   alpha = 0;
   beta = 0;
@@ -54,7 +54,6 @@ function setup() {
 }
 
 function draw() {
-
   switch (state) {
     case 0:
       image(bg, width / 2, height / 2, width, height);
@@ -76,8 +75,8 @@ function draw() {
       fill('black');
       noStroke();
       textSize(32);
-      textAlign(LEFT);
-      text('PAUSED', 50, 50);
+      textAlign(CENTER);
+      text('PAUSED', width/2, 50);
       break;
 
     case 4:
@@ -207,6 +206,8 @@ function resetGame() {
 }
 
 function mouseReleased() {
+
+
   switch (state) {
     case 0:
       state = 1;
@@ -235,10 +236,7 @@ window.addEventListener('deviceorientation', function(e) {
   gamma = e.gamma;
 });
 
-
-// accelerometer Data
 window.addEventListener('devicemotion', function(e) {
-  // get accelerometer values
   x = e.acceleration.x;
   y = e.acceleration.y;
   z = e.acceleration.z;
@@ -246,15 +244,12 @@ window.addEventListener('devicemotion', function(e) {
 
 class Ghost {
 
-  // constructor and attributes
   constructor(x, y) {
     this.pos = createVector(x, y);
     this.vel = createVector(random(-5, 5), random(-5, 5));
     this.col = color(random(255), random(255), random(255));
     this.width = random(30, 70);
   }
-
-  // methods
 
   display() {
     image(ghost, this.pos.x, this.pos.y, 100, 100);
