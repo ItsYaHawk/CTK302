@@ -227,6 +227,7 @@ function mouseReleased() {
   }
 }
 
+<<<<<<< HEAD
 function deviceShaken() {
   switch (state) {
     case 0:
@@ -247,6 +248,29 @@ function deviceShaken() {
       state = 2;
       break;
   }
+=======
+  function deviceShaken() {
+    switch (state) {
+      case 0:
+        state = 1;
+        break;
+      // case 2:
+      //   state = 3;
+      //   break;
+      // case 3:
+      //   state = 2;
+      //   break;
+      case 5:
+        resetGame();
+        state = 2;
+        break;
+      case 7:
+        resetGame();
+        state = 2;
+        break;
+    }
+
+>>>>>>> b347783f75f5070c45dcac7334b0d4be08910b34
 }
 
 window.addEventListener('deviceorientation', function(e) {
